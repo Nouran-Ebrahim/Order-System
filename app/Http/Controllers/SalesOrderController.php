@@ -25,14 +25,14 @@ class SalesOrderController extends Controller
         $ralation = ['customer', 'priceList', 'lines'];
         $headers = $this->SalesOrderService->all($ralation);
         // dd($SalesOrders);
-        return view('SalesOrder.index', ['headers' => $headers]);
+        return view('salesOrder.index', ['headers' => $headers]);
     }
 
     public function create()
     {
         $viewModel = new SalesOrderViewModel;
         $OrderNumber = $this->getTrx(8);
-        return view('SalesOrder.create', ['viewModel' => $viewModel, 'OrderNumber' => $OrderNumber]);
+        return view('salesOrder.create', ['viewModel' => $viewModel, 'OrderNumber' => $OrderNumber]);
     }
 
 
@@ -61,7 +61,7 @@ class SalesOrderController extends Controller
         foreach ($lines as $line) {
             $sum += $line->total;
         }
-        return view('SalesOrder.linesDetails', ['lines' => $lines, 'sum' => $sum]);
+        return view('salesOrder.linesDetails', ['lines' => $lines, 'sum' => $sum]);
 
     }
     public function getTrx($length = 12)
@@ -79,7 +79,7 @@ class SalesOrderController extends Controller
         $ralation = ['customer', 'priceList', 'lines'];
         $SalesOrder = $this->SalesOrderService->find($id, $ralation);
         $viewModel = new SalesOrderViewModel;
-        return view('SalesOrder.edit', ['SalesOrder' => $SalesOrder, 'viewModel' => $viewModel]);
+        return view('salesOrder.edit', ['SalesOrder' => $SalesOrder, 'viewModel' => $viewModel]);
     }
     public function ajax_products(Request $request)
     {

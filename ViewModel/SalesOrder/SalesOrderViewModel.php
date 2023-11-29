@@ -17,7 +17,7 @@ class SalesOrderViewModel
     }
     public function pricLists()
     {
-        return (new PriceListService())->all();
+        return (new PriceListService())->hasProducts();
     }
     public function customers()
     {

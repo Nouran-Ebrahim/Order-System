@@ -4,7 +4,7 @@
 namespace Repository\Product;
 
 
-use App\Models\product;
+use App\Models\Product;
 
 
 class ProductRepository
@@ -15,7 +15,7 @@ class ProductRepository
 
     public function __construct()
     {
-        $this->productModel = new product();
+        $this->productModel = new Product();
     }
 
     public function create(array $data)

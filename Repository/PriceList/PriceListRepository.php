@@ -20,13 +20,13 @@ class PriceListRepository
 
     public function create(array $data)
     {
-    
+
         $PriceList = $this->PriceListModel->create($data);
         $PriceList->products()->sync($data['product_id']);
         return $PriceList->fresh();
     }
 
-    public function update($id,array $data)
+    public function update($id, array $data)
     {
 
         // dd($data);
@@ -46,10 +46,25 @@ class PriceListRepository
     {
 
         $PriceList = $this->PriceListModel->with($relation)->get();
-
+        //if you want also delete price list that doesn't have any products do this code
+        // $PriceList = $this->PriceListModel->withCount('products')->get();
+        // $newList = [];
+        // foreach ($PriceList as $list) {
+        //     if ($list->products_count == 0) {
+        //         $list->destroy($list->id);
+        //     } else {
+        //          $newList[]= $list;
+        //     }
+        // }
+        // dd($newList);
         return $PriceList;
 
     }
+    public function hasProducts()
+    {
+        $PriceList = $this->PriceListModel->has('products')->get();
 
+        return $PriceList;
+    }
 
 }

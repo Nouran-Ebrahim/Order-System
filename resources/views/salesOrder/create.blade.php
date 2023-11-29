@@ -285,6 +285,8 @@
             // console.log($(this).val());
             var id = $(this).val();
             products(id);
+            $('.total').val('')
+            $('.quantity').val('')
             priceListData(id);
 
         })

@@ -83,7 +83,7 @@ class SalesOrderRepository
 
     public function all($relation = [])
     {
-
+        $this->headerModel->whereDoesntHave('lines')->delete();
         $header = $this->headerModel->with($relation)->orderBy('id', 'desc')->get();
         // dd($header);
         return $header;

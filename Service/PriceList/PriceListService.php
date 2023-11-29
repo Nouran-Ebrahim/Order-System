@@ -79,7 +79,18 @@ class PriceListService
         }
     }
 
+    public function hasProducts()
+    {
+        // dd(1);
+        try {
+            $items = $this->PriceListRepository->hasProducts();
+            return $items;
+        } catch (\Exception $exception) {
+            DB::rollBack();
 
+            return $exception;
+        }
+    }
 
     public function find($id, $relation = [])
     {

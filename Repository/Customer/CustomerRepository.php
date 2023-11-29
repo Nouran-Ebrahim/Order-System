@@ -4,7 +4,7 @@
 namespace Repository\Customer;
 
 
-use App\Models\customer;
+use App\Models\Customer;
 
 
 class CustomerRepository
@@ -15,7 +15,7 @@ class CustomerRepository
 
     public function __construct()
     {
-        $this->customerModel = new customer();
+        $this->customerModel = new Customer();
     }
 
     public function create(array $data)
